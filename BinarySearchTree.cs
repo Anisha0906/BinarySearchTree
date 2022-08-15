@@ -13,6 +13,8 @@ namespace BinarySearchTree
          public BinarySearchTree<T> leftTree { get; set; }
         public BinarySearchTree<T> rightTree { get; set; }
         bool result = false;
+        int leftCount = 0;
+        int rightCount = 0;
 
         public BinarySearchTree(T NodeData)
         {
@@ -20,7 +22,7 @@ namespace BinarySearchTree
          this.leftTree = null;
          this.rightTree = null;
         }
-        public void Insert(T item)
+         public void Insert(T item)
         {
             T currentNodeValue = this.NodeData;
             if ((currentNodeValue.CompareTo(item)) > 0)
@@ -38,17 +40,25 @@ namespace BinarySearchTree
                     this.rightTree.Insert(item);
             }
         }
-              public void Display()
+        public void Display()
         {
             if (this.leftTree != null)
             {
+                this.leftCount++;
                 this.leftTree.Display();
             }
             Console.WriteLine(this.NodeData.ToString());
             if (this.rightTree != null)
             {
+                this.rightCount++;
                 this.rightTree.Display();
             }
+
         }
+        public void Size()
+        {
+            Console.WriteLine("Size of Binary Serach Tree " + (1 + leftCount + rightCount));
+        }
+
     }
 }
